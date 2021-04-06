@@ -4,7 +4,7 @@ const Metric = {
 }
 
 const Increase = {
-    name = "increase-visitors",
+    name = "increase",
     run() documents.increase(Metric.name)
 }
 
