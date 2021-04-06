@@ -3,24 +3,21 @@ const Metric = {
     value = 0
 }
 
-const Hit {
-    name = "hit"
+const Increase = {
+    name = "increase-visitors",
+    run() documents.increase(Metric.name)
 }
 
 documents.create(Metric.name, Metric.value)
-
-const Increase = {
-    name = "increase-visitors",
-    run() documents.increase(Metrics.name)
-}
-
 actions.push(Increase)
 
 metrics.push({
     name = Metric.name
     fetch() {
+        // When metrics was fetched
         documents.get(Metric.name)
-        documents.increase(Metrics.name)
+        // A new visitor will be counted
+        actions.run(Increase.name)
     }
 })
 
