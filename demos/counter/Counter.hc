@@ -14,9 +14,7 @@ actions.push(Increase)
 metrics.push({
     name = Metric.name
     fetch() {
-        // When metrics was fetched
         documents.get(Metric.name)
-        // A new visitor will be counted
         actions.run(Increase.name)
     }
 })
