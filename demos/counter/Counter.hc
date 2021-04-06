@@ -1,5 +1,3 @@
-use metrics
-
 class Counter {
     name = "visits"
     public value = 0
@@ -11,7 +9,7 @@ metrics.push({
     fetch() Counter.value
 })
 
-using services.register({
+services.register({
     name = Counter.name
     protocol = "http"
     options = {
