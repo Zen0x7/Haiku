@@ -1,32 +1,32 @@
-const Metric = {
-    name = "visits"
-    value = 0
-}
+use namespace app
 
-const Increase = {
-    name = "increase",
-    run() documents.increase(Metric.name)
-}
+const name = "visits"
+const action = "increase"
+const value = 0
 
-documents.create(Metric.name, Metric.value)
-actions.push(Increase)
+app.documents.create(name, value)
 
-metrics.push({
-    name = Metric.name
+app.actions.create({
+    name = action
+    run() app.documents.increase(name)
+})
+
+app.metrics.create({
+    ...name
     fetch() {
-        documents.get(Metric.name)
-        actions.run(Increase.name)
+        app.actions.run(touch)
+        return documents.get(name)
     }
 })
 
-services.register({
-    name = Metric.name
+app.services.create({
+    ...name
     protocol = "http"
     options = {
         port = 80
         methods = ["GET"]
-        path = Metric.name
+        path = name
     }
-    call() metrics.fetch(Metric.name)
+    call() app.metrics.fetch(name)
 })
 
