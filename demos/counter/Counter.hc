@@ -2,7 +2,7 @@ use namespace app
 
 const name = "visits"
 const action = "increase"
-const value = 0
+integer value = 0
 
 app.documents.create(name, value)
 
